@@ -124,27 +124,51 @@
   }, { threshold: 0.5 });
   ledgerIO.observe(ledger);
 
-  // ── waitlist: CTAs preselect the role; submission is not wired to a service yet ──
+  // ── waitlist: CTAs preselect the role; signups go to Web3Forms ──
   const form = $("#wl-form");
   const msg = $("#wl-msg");
   $$("a[data-role]").forEach((a) => a.addEventListener("click", () => {
     const radio = form.querySelector(`input[name="role"][value="${a.dataset.role}"]`);
     if (radio) radio.checked = true;
   }));
-  // Set this to a form service URL (Formspree, Netlify Forms, etc.) to collect signups.
-  const SIGNUP_ENDPOINT = "";
+  // Web3Forms (free plan): each signup is emailed to the Stated Roots inbox.
+  // The access key is public by design; it can only send mail to that inbox.
+  const WEB3FORMS_KEY = "22e83573-5518-4b7c-b5a5-4c6e7f9e1060";
+  const submitBtn = form.querySelector('button[type="submit"]');
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
+    if (form.botcheck && form.botcheck.checked) return; // honeypot: bots tick hidden boxes
     const email = form.email.value.trim();
     if (!form.email.checkValidity() || !email) { msg.textContent = "Please enter a valid email address."; form.email.focus(); return; }
-    if (!SIGNUP_ENDPOINT) { msg.textContent = "Signups open soon. Thanks for your interest; please check back shortly."; return; }
+    const role = (form.querySelector('input[name="role"]:checked') || {}).value || "retailer";
     msg.textContent = "Sending…";
+    submitBtn.disabled = true;
     try {
-      const res = await fetch(SIGNUP_ENDPOINT, { method: "POST", headers: { Accept: "application/json" }, body: new FormData(form) });
-      msg.textContent = res.ok ? "You're on the list. We'll be in touch before launch." : "Something went wrong. Please try again.";
-      if (res.ok) form.reset();
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `New Stated Roots waitlist signup (${role})`,
+          from_name: "statedroots.com waitlist",
+          email,
+          role,
+          page: location.href,
+        }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success !== false) {
+        msg.textContent = role === "artist"
+          ? "Thank you. You're on the artist list; we'll be in touch about founding collections."
+          : "You're on the list. We'll be in touch before launch.";
+        form.reset();
+      } else {
+        msg.textContent = "Something went wrong. Please try again in a moment.";
+      }
     } catch (err) {
-      msg.textContent = "Something went wrong. Please try again.";
+      msg.textContent = "We couldn't reach the signup service. Please try again in a moment.";
+    } finally {
+      submitBtn.disabled = false;
     }
   });
 

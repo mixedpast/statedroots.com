@@ -360,8 +360,9 @@
       <div class="flex flex-col gap-3 sm:flex-row">
         <label for="wl-email" class="sr-only">Email address</label>
         <input id="wl-email" name="email" type="email" required autocomplete="email" placeholder="you@yourbrand.com" class="min-w-0 flex-1 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-[#F1E7D6] placeholder:text-[#C9BCA6]/70 focus:border-[#E0763F] focus:outline-none">
-        <button type="submit" class="rounded-lg bg-[#E0763F] px-6 py-3 font-semibold text-[#12151F] transition hover:brightness-110">Join the waitlist</button>
+        <button type="submit" class="rounded-lg bg-[#E0763F] px-6 py-3 font-semibold text-[#12151F] transition hover:brightness-110 disabled:cursor-wait disabled:opacity-70">Join the waitlist</button>
       </div>
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" class="hidden">
       <p id="wl-msg" class="min-h-6 text-center text-[0.92rem] text-[#E4D8C4]" aria-live="polite"></p>
     </form>
   </div>
