@@ -1,0 +1,387 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stated Roots · Generative art rooted in the West</title>
+<meta name="description" content="A premier generative art and licensing platform rooted in Western, rural, and rustic traditions. Create and license distinctive designs for home décor, apparel, and lifestyle products.">
+<meta name="theme-color" content="#F3EADB" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#12151F" media="(prefers-color-scheme: dark)">
+<meta property="og:title" content="Stated Roots">
+<meta property="og:description" content="We bring the spirit of the West into everyday life.">
+<meta property="og:image" content="https://statedroots.com/assets/img/hero-day.webp">
+<meta property="og:url" content="https://statedroots.com/">
+<link rel="canonical" href="https://statedroots.com/">
+<link rel="icon" href="assets/img/favicon-64.png" type="image/png">
+<link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+<script>
+  // theme before first paint: saved choice, else the system's, else Golden Hour
+  (function () {
+    var d = document.documentElement, t = null;
+    d.classList.add("js");
+    try { t = localStorage.getItem("sr-theme"); } catch (e) {}
+    if (t !== "light" && t !== "dark") t = window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    d.setAttribute("data-theme", t);
+  })();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="assets/img/hero-sketch.webp" imagesrcset="assets/img/hero-sketch-960.webp 960w, assets/img/hero-sketch.webp 1672w" imagesizes="100vw">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body class="grain">
+
+<a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-md focus:bg-surface focus:px-4 focus:py-2 focus:text-ink">Skip to content</a>
+
+<!-- symbol library: the brand mark and the ranch brands, drawn like irons -->
+<svg width="0" height="0" class="absolute" aria-hidden="true">
+  <defs>
+    <symbol id="brand-rocking-r" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 34 V11 H25 C32 11 32 23 25 23 H16 M24 23 L32 34"/><path d="M9 40 Q24 48 39 40"/></g></symbol>
+    <symbol id="brand-bar-s" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 9 H37"/><path d="M31 18 C27 14 17 14 17 21 C17 27 31 26 31 33 C31 40 20 40 16 36"/></g></symbol>
+    <symbol id="brand-lazy-j" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(-90 24 24)"><path d="M30 9 V29 C30 38 17 38 17 31"/></g></symbol>
+    <symbol id="brand-circle-t" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="24" cy="24" r="17"/><path d="M15 17 H33 M24 17 V34"/></g></symbol>
+    <symbol id="brand-flying-w" viewBox="0 0 48 48"><g fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16 L19 32 L24 21 L29 32 L34 16"/><path d="M14 16 C9 13 5 15 4 19 M34 16 C39 13 43 15 44 19"/></g></symbol>
+    <filter id="iron-edge" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="3.2"/>
+    </filter>
+  </defs>
+</svg>
+
+<!-- ═════════ NAV ═════════ -->
+<header id="nav" class="fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-300 data-[scrolled=true]:bg-page/90 data-[scrolled=true]:shadow-[0_1px_0_var(--line)] data-[scrolled=true]:backdrop-blur-md">
+  <nav class="mx-auto flex h-16 max-w-7xl items-center gap-6 px-5 md:h-20 md:px-8" aria-label="Primary">
+    <a href="#top" class="flex items-center gap-3 text-ink" aria-label="Stated Roots, back to top">
+      <span class="logo-mark h-10" aria-hidden="true"></span>
+      <span class="logo-word h-[14px] md:h-[16px]" aria-hidden="true"></span>
+    </a>
+    <ul class="ml-auto hidden items-center gap-7 text-[0.92rem] font-medium text-ink/80 lg:flex">
+      <li><a class="hover:text-primary" href="#collections">Collections</a></li>
+      <li><a class="hover:text-primary" href="#how">How it works</a></li>
+      <li><a class="hover:text-primary" href="#brand-book">The Brand Book</a></li>
+      <li><a class="hover:text-primary" href="#artists">For artists</a></li>
+    </ul>
+    <button id="theme-toggle" type="button" class="ml-auto grid h-10 w-10 place-items-center rounded-full text-ink/80 transition hover:bg-ink/10 hover:text-ink lg:ml-0" aria-label="Switch to night theme">
+      <svg class="h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M21 13.2A8.5 8.5 0 1 1 10.8 3a6.6 6.6 0 0 0 10.2 10.2Z"/></svg>
+      <svg class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/></svg>
+    </button>
+    <a href="#waitlist" class="btn-primary hidden py-2.5 sm:inline-flex">Join the waitlist</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<!-- ═════════ 1 · HERO ═════════ -->
+<section id="top" class="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-14 pt-28 md:items-center md:pb-24" aria-labelledby="hero-title">
+  <div id="hero-art" class="hero-art absolute inset-0 -z-10" aria-hidden="true">
+    <img class="hero-sketch" src="assets/img/hero-sketch.webp" srcset="assets/img/hero-sketch-960.webp 960w, assets/img/hero-sketch.webp 1672w" sizes="100vw" alt="" fetchpriority="high">
+    <img class="hero-day" src="assets/img/hero-day.webp" srcset="assets/img/hero-day-960.webp 960w, assets/img/hero-day.webp 1672w" sizes="100vw" alt="">
+    <img class="hero-night" src="assets/img/hero-night.webp" srcset="assets/img/hero-night-960.webp 960w, assets/img/hero-night.webp 1672w" sizes="100vw" alt="" loading="lazy">
+    <div class="absolute inset-0 bg-gradient-to-r from-page from-0% via-page/80 via-45% to-transparent to-100% md:from-page md:from-15% md:via-page/70 md:via-38% md:to-transparent md:to-62%"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-page from-10% via-page/85 via-55% to-transparent md:hidden"></div>
+    <div class="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-page to-transparent"></div>
+    <div class="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-page/60 to-transparent"></div>
+  </div>
+
+  <div class="mx-auto grid w-full max-w-7xl gap-10 px-5 md:px-8 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-end">
+    <div class="max-w-2xl">
+      <p class="kicker mb-5">Artist-authorized generative art · Coming soon</p>
+      <h1 id="hero-title" class="text-[clamp(2.7rem,6.4vw,5.6rem)] font-semibold leading-[0.98] tracking-[-0.02em]">We bring the spirit of the West into everyday life.</h1>
+      <p class="mt-6 max-w-[50ch] text-[1.06rem] leading-relaxed md:text-[1.1rem]">A premier generative art and licensing platform rooted in Western, rural, and rustic traditions. Stated Roots partners with Western, rural, lifestyle, and landscape artists to unite authentic artistry with advanced AI, empowering businesses to create and license distinctive designs for home décor, apparel, and lifestyle products.</p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a href="#waitlist" data-role="retailer" class="btn-primary">Join the retailer waitlist</a>
+        <a href="#waitlist" data-role="artist" class="btn-ghost">Artists: partner with us</a>
+      </div>
+      <ol class="hero-steps mt-10 flex flex-wrap items-center gap-x-5 gap-y-2 font-mono text-[0.78rem] text-body" aria-label="From study to design">
+        <li data-step="0" class="flex items-center gap-2"><span class="dot h-2 w-2 rounded-full bg-body/50"></span>Study</li>
+        <li class="text-body/40" aria-hidden="true">→</li>
+        <li data-step="1" class="flex items-center gap-2"><span class="dot h-2 w-2 rounded-full bg-body/50"></span>Painting</li>
+        <li class="text-body/40" aria-hidden="true">→</li>
+        <li data-step="2" class="flex items-center gap-2"><span class="dot h-2 w-2 rounded-full bg-body/50"></span>Design</li>
+        <li class="basis-full text-body sm:basis-auto sm:pl-3">Big Sky Country collection</li>
+      </ol>
+    </div>
+
+    <figure id="design-card" class="design-card hidden justify-self-end rounded-xl bg-surface p-3 shadow-[0_30px_60px_-30px_rgba(35,28,23,.55)] ring-1 ring-line lg:block">
+      <img src="assets/img/hero-print-640.webp" width="640" height="360" alt="The same scene as a flat, six-ink screen print design" class="w-full rounded-md">
+      <figcaption class="flex items-center justify-between gap-3 px-1 pt-3 font-mono text-[0.72rem] text-body">
+        <span><span class="text-primary">●</span> Design-ready print</span>
+        <span class="flex gap-2 text-secondary" aria-label="For pillows, tees and tumblers">
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 7c3-2 13-2 16 0 1 3 1 7 0 10-3 2-13 2-16 0-1-3-1-7 0-10Z"/></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M8 3 4 6l2 4 2-1v12h8V9l2 1 2-4-4-3c-1 2-7 2-8 0Z"/></svg>
+          <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10l-1.5 16h-7L7 4Z M6.5 7.5h11"/></svg>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════ 2 · PRODUCTS ═════════ -->
+<section id="products" class="relative py-24 md:py-32" aria-labelledby="products-title">
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <div class="grid gap-6 md:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] md:items-end">
+      <div data-reveal>
+        <p class="kicker mb-4">Made for what you sell</p>
+        <h2 id="products-title" class="text-[clamp(2rem,4.2vw,3.4rem)] font-semibold leading-[1.04] tracking-[-0.015em]">One painting. A whole product line.</h2>
+      </div>
+      <p data-reveal data-delay="1" class="max-w-[48ch] text-[1.05rem] leading-relaxed md:justify-self-end">Generate a design once, then carry it across the categories your shop already sells: home décor, apparel, and lifestyle goods.</p>
+    </div>
+    <div class="mt-14 grid gap-6 sm:grid-cols-3">
+      <figure data-reveal class="group">
+        <div class="overflow-hidden rounded-xl ring-1 ring-line"><img src="assets/img/product-home.webp" width="900" height="1118" loading="lazy" alt="A linen throw pillow printed with the prairie design, on a cognac leather chair" class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.03]"></div>
+        <figcaption class="mt-4 flex items-baseline justify-between gap-3"><span class="font-display text-xl font-semibold text-ink">Home décor</span><span class="font-mono text-[0.72rem] text-body/80">pillows · wall art · throws</span></figcaption>
+      </figure>
+      <figure data-reveal data-delay="1" class="group">
+        <div class="overflow-hidden rounded-xl ring-1 ring-line"><img src="assets/img/product-apparel.webp" width="900" height="1118" loading="lazy" alt="A bone-colored t-shirt printed with the prairie design, laid out with a denim jacket and a leather belt" class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.03]"></div>
+        <figcaption class="mt-4 flex items-baseline justify-between gap-3"><span class="font-display text-xl font-semibold text-ink">Apparel</span><span class="font-mono text-[0.72rem] text-body/80">tees · caps · patches</span></figcaption>
+      </figure>
+      <figure data-reveal data-delay="2" class="group">
+        <div class="overflow-hidden rounded-xl ring-1 ring-line"><img src="assets/img/product-lifestyle.webp" width="900" height="1118" loading="lazy" alt="An enamel camp mug and a steel tumbler printed with the prairie design, on a truck tailgate at golden hour" class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.03]"></div>
+        <figcaption class="mt-4 flex items-baseline justify-between gap-3"><span class="font-display text-xl font-semibold text-ink">Lifestyle</span><span class="font-mono text-[0.72rem] text-body/80">mugs · tumblers · totes</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 3 · COLLECTIONS ═════════ -->
+<section id="collections" class="relative border-y border-line bg-surface py-24 md:py-32" aria-labelledby="collections-title">
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <div class="max-w-3xl" data-reveal>
+      <p class="kicker mb-4">Artist-authorized collections</p>
+      <h2 id="collections-title" class="text-[clamp(2rem,4.2vw,3.4rem)] font-semibold leading-[1.04] tracking-[-0.015em]">Real artists. Real roots. Your designs.</h2>
+      <p class="mt-5 max-w-[60ch] text-[1.05rem] leading-relaxed">You don't buy finished artwork. You subscribe to collections from Western, rural, lifestyle, and landscape artists, then create new designs in their authorized style.</p>
+    </div>
+    <ul class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <li data-reveal>
+        <article class="group">
+          <div class="overflow-hidden rounded-xl ring-1 ring-line"><img src="assets/img/collection-big-sky.webp" width="820" height="1019" loading="lazy" alt="Oil painting of a bison bull in frosted prairie grass at sunrise" class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.04]"></div>
+          <h3 class="mt-4 text-[1.35rem] font-semibold">Big Sky Country</h3>
+          <p class="font-mono text-[0.75rem] text-body/80">Oil on linen · high plains</p>
+        </article>
+      </li>
+      <li data-reveal data-delay="1">
+        <article class="group">
+          <div class="overflow-hidden rounded-xl ring-1 ring-line"><img src="assets/img/collection-high-desert.webp" width="820" height="1019" loading="lazy" alt="Watercolor of a juniper above red sandstone mesas" class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.04]"></div>
+          <h3 class="mt-4 text-[1.35rem] font-semibold">High Desert</h3>
+          <p class="font-mono text-[0.75rem] text-body/80">Watercolor on cotton paper</p>
+        </article>
+      </li>
+      <li data-reveal data-delay="2">
+        <article class="group">
+          <div class="overflow-hidden rounded-xl ring-1 ring-line"><img src="assets/img/collection-ranch-life.webp" width="820" height="1019" loading="lazy" alt="Folk art painting of a working ranch seen from above, with a red barn, corrals and riders" class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.04]"></div>
+          <h3 class="mt-4 text-[1.35rem] font-semibold">Ranch Life</h3>
+          <p class="font-mono text-[0.75rem] text-body/80">Folk art · acrylic on panel</p>
+        </article>
+      </li>
+      <li data-reveal data-delay="3">
+        <article class="group">
+          <div class="overflow-hidden rounded-xl ring-1 ring-line"><img src="assets/img/collection-barnwood-brass.webp" width="820" height="1019" loading="lazy" alt="Two-color linocut of a brass lantern, a lariat and spurs on barn boards" class="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-[1.04]"></div>
+          <h3 class="mt-4 text-[1.35rem] font-semibold">Barnwood &amp; Brass</h3>
+          <p class="font-mono text-[0.75rem] text-body/80">Two-color linocut</p>
+        </article>
+      </li>
+    </ul>
+    <p class="mt-8 font-mono text-[0.75rem] text-body/70">Collections shown are illustrative while our founding artists come on board.</p>
+  </div>
+</section>
+
+<!-- ═════════ 4 · HOW IT WORKS ═════════ -->
+<section id="how" class="relative overflow-hidden py-24 md:py-32" aria-labelledby="how-title">
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <div class="max-w-3xl" data-reveal>
+      <p class="kicker mb-4">From collection to catalog</p>
+      <h2 id="how-title" class="text-[clamp(2rem,4.2vw,3.4rem)] font-semibold leading-[1.04] tracking-[-0.015em]">Four stops from idea to storefront.</h2>
+    </div>
+  </div>
+  <div id="trail" class="relative mx-auto mt-10 max-w-[1600px]">
+    <div class="topo absolute inset-0 opacity-[0.22] dark:opacity-[0.18]" aria-hidden="true"></div>
+    <svg class="relative block h-auto w-full" viewBox="0 120 1600 620" role="img" aria-label="A trail across a topographic map with four waypoints">
+      <path class="trail-shadow" d="M40 523 L50 526 L60 528 L70 530 L80 531 L90 532 L100 533 L110 533 L120 533 L130 532 L140 532 L150 531 L160 530 L170 528 L180 527 L190 525 L200 524 L210 522 L220 521 L230 519 L240 518 L250 517 L260 516 L270 515 L280 515 L290 514 L300 514 L310 515 L320 515 L330 516 L340 517 L350 519 L360 520 L370 522 L380 524 L390 527 L400 530 L410 533 L420 536 L430 539 L440 542 L450 545 L460 549 L470 552 L480 555 L490 558 L500 561 L510 564 L520 567 L530 569 L540 571 L550 572 L560 574 L570 574 L580 575 L590 575 L600 574 L610 573 L620 571 L630 569 L640 567 L650 563 L660 560 L670 556 L680 551 L690 546 L700 541 L710 535 L720 529 L730 522 L740 515 L750 508 L760 501 L770 494 L780 486 L790 478 L800 471 L810 463 L820 456 L830 449 L840 442 L850 435 L860 428 L870 422 L880 416 L890 410 L900 405 L910 400 L920 396 L930 392 L940 389 L950 386 L960 384 L970 382 L980 380 L990 379 L1000 379 L1010 379 L1020 379 L1030 380 L1040 381 L1050 383 L1060 384 L1070 386 L1080 388 L1090 391 L1100 393 L1110 396 L1120 398 L1130 401 L1140 403 L1150 406 L1160 408 L1170 411 L1180 413 L1190 415 L1200 416 L1210 418 L1220 419 L1230 420 L1240 420 L1250 420 L1260 420 L1270 420 L1280 419 L1290 419 L1300 417 L1310 416 L1320 415 L1330 413 L1340 411 L1350 409 L1360 407 L1370 405 L1380 403 L1390 401 L1400 399 L1410 397 L1420 395 L1430 393 L1440 392 L1450 391 L1460 390 L1470 390 L1480 390 L1490 390 L1500 391 L1510 392 L1520 394 L1530 396 L1540 398 L1550 402 L1560 405" fill="none" stroke="var(--line)" stroke-width="4" stroke-dasharray="2 12" stroke-linecap="round"/>
+      <path id="trail-path" class="trail-path" d="M40 523 L50 526 L60 528 L70 530 L80 531 L90 532 L100 533 L110 533 L120 533 L130 532 L140 532 L150 531 L160 530 L170 528 L180 527 L190 525 L200 524 L210 522 L220 521 L230 519 L240 518 L250 517 L260 516 L270 515 L280 515 L290 514 L300 514 L310 515 L320 515 L330 516 L340 517 L350 519 L360 520 L370 522 L380 524 L390 527 L400 530 L410 533 L420 536 L430 539 L440 542 L450 545 L460 549 L470 552 L480 555 L490 558 L500 561 L510 564 L520 567 L530 569 L540 571 L550 572 L560 574 L570 574 L580 575 L590 575 L600 574 L610 573 L620 571 L630 569 L640 567 L650 563 L660 560 L670 556 L680 551 L690 546 L700 541 L710 535 L720 529 L730 522 L740 515 L750 508 L760 501 L770 494 L780 486 L790 478 L800 471 L810 463 L820 456 L830 449 L840 442 L850 435 L860 428 L870 422 L880 416 L890 410 L900 405 L910 400 L920 396 L930 392 L940 389 L950 386 L960 384 L970 382 L980 380 L990 379 L1000 379 L1010 379 L1020 379 L1030 380 L1040 381 L1050 383 L1060 384 L1070 386 L1080 388 L1090 391 L1100 393 L1110 396 L1120 398 L1130 401 L1140 403 L1150 406 L1160 408 L1170 411 L1180 413 L1190 415 L1200 416 L1210 418 L1220 419 L1230 420 L1240 420 L1250 420 L1260 420 L1270 420 L1280 419 L1290 419 L1300 417 L1310 416 L1320 415 L1330 413 L1340 411 L1350 409 L1360 407 L1370 405 L1380 403 L1390 401 L1400 399 L1410 397 L1420 395 L1430 393 L1440 392 L1450 391 L1460 390 L1470 390 L1480 390 L1490 390 L1500 391 L1510 392 L1520 394 L1530 396 L1540 398 L1550 402 L1560 405" fill="none" stroke="var(--primary)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+      <g class="waypoint" data-at="0.1"><circle class="ring" cx="200" cy="524" r="24" fill="var(--page)" stroke="var(--secondary)" stroke-width="3"/><text x="200" y="532" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="24" font-weight="700" fill="var(--secondary)">1</text></g>
+      <g class="waypoint" data-at="0.37"><circle class="ring" cx="600" cy="574" r="24" fill="var(--page)" stroke="var(--secondary)" stroke-width="3"/><text x="600" y="582" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="24" font-weight="700" fill="var(--secondary)">2</text></g>
+      <g class="waypoint" data-at="0.64"><circle class="ring" cx="1000" cy="379" r="24" fill="var(--page)" stroke="var(--secondary)" stroke-width="3"/><text x="1000" y="387" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="24" font-weight="700" fill="var(--secondary)">3</text></g>
+      <g class="waypoint" data-at="0.91"><circle class="ring" cx="1400" cy="399" r="24" fill="var(--page)" stroke="var(--secondary)" stroke-width="3"/><text x="1400" y="407" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="24" font-weight="700" fill="var(--secondary)">4</text></g>
+    </svg>
+  </div>
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <ol class="-mt-2 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <li class="step" data-step="0"><p class="font-mono text-[0.75rem] text-primary">Stop 01</p><h3 class="mt-2 text-[1.4rem] font-semibold">Register your brand</h3><p class="mt-2 leading-relaxed">Tell us who you are and where you sell.</p></li>
+      <li class="step" data-step="1"><p class="font-mono text-[0.75rem] text-primary">Stop 02</p><h3 class="mt-2 text-[1.4rem] font-semibold">Subscribe to collections</h3><p class="mt-2 leading-relaxed">Pick the artists whose style fits your line.</p></li>
+      <li class="step" data-step="2"><p class="font-mono text-[0.75rem] text-primary">Stop 03</p><h3 class="mt-2 text-[1.4rem] font-semibold">Generate and refine</h3><p class="mt-2 leading-relaxed">Create new, coherent designs for real products.</p></li>
+      <li class="step" data-step="3"><p class="font-mono text-[0.75rem] text-primary">Stop 04</p><h3 class="mt-2 text-[1.4rem] font-semibold">Export with your record</h3><p class="mt-2 leading-relaxed">Every design leaves with a record of the commercial use that comes with it.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ═════════ 5 · THE STUDIO ═════════ -->
+<section id="studio" class="relative overflow-hidden bg-lab py-24 text-lab-ink md:py-32" aria-labelledby="studio-title">
+  <div class="pointer-events-none absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-primary/15 blur-[120px]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute -right-32 bottom-0 h-[420px] w-[420px] rounded-full bg-brass/10 blur-[120px]" aria-hidden="true"></div>
+  <div class="relative mx-auto grid max-w-7xl gap-12 px-5 md:px-8 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] lg:items-center">
+    <div data-reveal>
+      <p class="kicker mb-4">The studio</p>
+      <h2 id="studio-title" class="text-[clamp(2rem,4.2vw,3.4rem)] font-semibold leading-[1.04] tracking-[-0.015em] text-lab-ink">Describe it. Watch it develop.</h2>
+      <p class="mt-5 max-w-[48ch] text-[1.05rem] leading-relaxed text-lab-ink/80">Choose a collection, describe what you need and what it's for. The studio creates new designs in that artist's authorized style, ready to refine, compare, and export.</p>
+      <p class="mt-6 inline-flex items-center gap-2 rounded-full border border-lab-ink/20 px-3 py-1 font-mono text-[0.72rem] text-lab-mute"><span class="h-1.5 w-1.5 rounded-full bg-primary"></span>Preview of the planned studio</p>
+    </div>
+
+    <div id="studio-app" data-reveal data-delay="1" class="rounded-2xl bg-lab-2/80 p-2 shadow-[0_40px_80px_-40px_rgba(0,0,0,.8)] ring-1 ring-lab-ink/10">
+      <div class="flex items-center gap-2 px-3 py-2 font-mono text-[0.7rem] text-lab-mute">
+        <span class="logo-mark h-4 text-lab-ink" aria-hidden="true"></span><span>Stated Roots Studio</span><span class="ml-auto">Batch 04</span>
+      </div>
+      <div class="grid gap-2 md:grid-cols-[180px_minmax(0,1fr)]">
+        <aside class="hidden rounded-xl bg-lab/70 p-3 md:block" aria-label="Collections">
+          <p class="px-1 pb-2 font-mono text-[0.66rem] uppercase tracking-[0.18em] text-lab-mute">Collections</p>
+          <ul class="space-y-1 text-[0.82rem]">
+            <li class="flex items-center gap-2 rounded-lg px-1.5 py-1.5 text-lab-ink/70"><img src="assets/img/collection-big-sky.webp" alt="" class="h-7 w-7 rounded object-cover" loading="lazy">Big Sky Country</li>
+            <li class="flex items-center gap-2 rounded-lg bg-lab-ink/10 px-1.5 py-1.5 text-lab-ink ring-1 ring-primary/50"><img src="assets/img/collection-high-desert.webp" alt="" class="h-7 w-7 rounded object-cover" loading="lazy">High Desert</li>
+            <li class="flex items-center gap-2 rounded-lg px-1.5 py-1.5 text-lab-ink/70"><img src="assets/img/collection-ranch-life.webp" alt="" class="h-7 w-7 rounded object-cover" loading="lazy">Ranch Life</li>
+            <li class="flex items-center gap-2 rounded-lg px-1.5 py-1.5 text-lab-ink/70"><img src="assets/img/collection-barnwood-brass.webp" alt="" class="h-7 w-7 rounded object-cover" loading="lazy">Barnwood &amp; Brass</li>
+          </ul>
+        </aside>
+        <div class="rounded-xl bg-lab/70 p-3">
+          <div class="flex flex-wrap items-center gap-2 rounded-lg bg-lab-2 p-2 ring-1 ring-lab-ink/10">
+            <span class="rounded-full bg-primary/90 px-2.5 py-0.5 font-mono text-[0.68rem] text-on-primary md:hidden">High Desert</span>
+            <p class="order-last w-full min-w-0 px-1 font-mono text-[0.8rem] text-lab-ink md:order-none md:w-auto md:flex-1" aria-live="off"><span class="text-lab-mute">›</span> <span id="prompt-text">wild mustangs at a desert spring, for a framed wall print</span><span class="caret" aria-hidden="true"></span></p>
+            <button id="gen-btn" type="button" class="gen-btn ml-auto rounded-md bg-primary px-3 py-1.5 text-[0.8rem] font-semibold text-on-primary">Generate</button>
+          </div>
+          <div class="mt-3 grid grid-cols-2 gap-2">
+            <div class="tile aspect-square"><img src="assets/img/studio-1.webp" width="720" height="720" loading="lazy" alt="Watercolor: a band of mustangs drinking at a spring beneath red cliffs"></div>
+            <div class="tile aspect-square"><img src="assets/img/studio-2.webp" width="720" height="720" loading="lazy" alt="Watercolor: close portrait of a dappled gray mare lifting her head from the water"></div>
+            <div class="tile aspect-square"><img src="assets/img/studio-3.webp" width="720" height="720" loading="lazy" alt="Watercolor: a canyon at sunrise seen from the rim, mustangs small at the spring below"></div>
+            <div class="tile aspect-square"><img src="assets/img/studio-4.webp" width="720" height="720" loading="lazy" alt="Watercolor: mustangs galloping through a shallow wash, spray flying"></div>
+          </div>
+          <div class="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 px-1 font-mono text-[0.68rem] text-lab-mute">
+            <span>4 variations · 1:1 · watercolor</span>
+            <span id="gen-status" class="text-lab-ink/80" aria-live="polite"></span>
+            <button id="gen-replay" type="button" class="ml-auto text-lab-ink/70 underline decoration-lab-ink/30 underline-offset-4 hover:text-lab-ink">Run it again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 6 · THE BRAND BOOK ═════════ -->
+<section id="brand-book" class="relative py-24 md:py-32" aria-labelledby="bb-title">
+  <div class="mx-auto grid max-w-7xl gap-14 px-5 md:px-8 lg:grid-cols-2 lg:items-center">
+    <div data-reveal>
+      <p class="kicker mb-4">Your brand, on the record</p>
+      <h2 id="bb-title" class="text-[clamp(2rem,4.2vw,3.4rem)] font-semibold leading-[1.04] tracking-[-0.015em]">Ranchers registered their brands. So will you.</h2>
+      <p class="mt-5 max-w-[56ch] text-[1.05rem] leading-relaxed">For generations, Western ranches recorded their brand in the state brand book, so anyone could see whose mark it was. Stated Roots carries that idea forward: your reseller brand, the channels where you sell, and the permission behind every design, kept on record.</p>
+      <ul class="mt-9 flex flex-wrap gap-x-7 gap-y-5 text-secondary" aria-label="Traditional ranch brands">
+        <li class="flex flex-col items-center gap-1.5"><svg class="h-11 w-11" aria-hidden="true"><use href="#brand-rocking-r"/></svg><span class="font-mono text-[0.64rem] text-body/70">Rocking R</span></li>
+        <li class="flex flex-col items-center gap-1.5"><svg class="h-11 w-11" aria-hidden="true"><use href="#brand-bar-s"/></svg><span class="font-mono text-[0.64rem] text-body/70">Bar S</span></li>
+        <li class="flex flex-col items-center gap-1.5"><svg class="h-11 w-11" aria-hidden="true"><use href="#brand-lazy-j"/></svg><span class="font-mono text-[0.64rem] text-body/70">Lazy J</span></li>
+        <li class="flex flex-col items-center gap-1.5"><svg class="h-11 w-11" aria-hidden="true"><use href="#brand-circle-t"/></svg><span class="font-mono text-[0.64rem] text-body/70">Circle T</span></li>
+        <li class="flex flex-col items-center gap-1.5"><svg class="h-11 w-11" aria-hidden="true"><use href="#brand-flying-w"/></svg><span class="font-mono text-[0.64rem] text-body/70">Flying W</span></li>
+      </ul>
+    </div>
+
+    <figure id="ledger" data-reveal data-delay="1" class="relative">
+      <div class="relative overflow-hidden rounded-xl bg-surface shadow-[0_40px_70px_-40px_rgba(35,28,23,.6)] ring-1 ring-line">
+        <div class="flex items-center justify-between border-b border-line px-7 py-4">
+          <p class="font-display text-[1.05rem] font-semibold tracking-[0.12em] text-ink">BRAND BOOK</p>
+          <p class="font-mono text-[0.72rem] text-body/70">Record No. 0187 · sample</p>
+        </div>
+        <div class="ledger-lines relative px-7 pb-40 pt-3">
+          <div class="absolute bottom-0 left-[9.2rem] top-0 hidden w-px bg-primary/30 sm:block" aria-hidden="true"></div>
+          <dl class="grid grid-cols-1 font-mono text-[0.84rem] leading-[2.35rem] sm:grid-cols-[8.2rem_minmax(0,1fr)] sm:gap-x-6">
+            <dt class="text-body/65">Reseller brand</dt><dd class="text-ink">Juniper &amp; Rye Goods</dd>
+            <dt class="text-body/65">Channels</dt><dd class="text-ink">Etsy shop · juniperandrye.com</dd>
+            <dt class="text-body/65">Collection</dt><dd class="text-ink">High Desert</dd>
+            <dt class="text-body/65">Design</dt><dd class="text-ink">SR-0187 · "Mustangs at the Spring"</dd>
+            <dt class="text-body/65">Commercial use</dt><dd class="text-ink">Included, under the applicable terms</dd>
+          </dl>
+          <div class="pointer-events-none absolute bottom-3 right-6 h-32 w-32" aria-hidden="true">
+            <span class="scorch absolute inset-1 rounded-full bg-brass blur-[10px]"></span>
+            <span class="stamp absolute inset-0 grid place-items-center text-primary [filter:url(#iron-edge)]">
+              <svg class="absolute inset-0 h-full w-full" viewBox="0 0 140 140"><circle cx="70" cy="70" r="60" fill="none" stroke="currentColor" stroke-width="4"/><circle cx="70" cy="70" r="52" fill="none" stroke="currentColor" stroke-width="1.5" opacity=".7"/></svg>
+              <span class="logo-mark relative h-[58%]"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <figcaption class="mt-4 font-mono text-[0.72rem] text-body/70">A sample record. Brand verification and channel authorization are a planned service; details are in development.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ═════════ 7 · FOR ARTISTS ═════════ -->
+<section id="artists" class="relative border-t border-line bg-surface" aria-labelledby="artists-title">
+  <div class="relative">
+    <img src="assets/img/artist-plein-air.webp" srcset="assets/img/artist-plein-air-1200.webp 1200w, assets/img/artist-plein-air.webp 2400w" sizes="100vw" width="2400" height="1029" loading="lazy" alt="A landscape painter at an easel on a high plains ridge at golden hour" class="aspect-[16/9] w-full object-cover md:aspect-[21/9]">
+    <div class="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-surface to-transparent" aria-hidden="true"></div>
+  </div>
+  <div class="relative mx-auto -mt-16 max-w-7xl px-5 pb-24 md:-mt-28 md:px-8 md:pb-32">
+    <div class="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:items-start">
+      <div data-reveal>
+        <p class="kicker mb-4">For Western artists</p>
+        <h2 id="artists-title" class="text-[clamp(2rem,4.2vw,3.4rem)] font-semibold leading-[1.04] tracking-[-0.015em]">Your work keeps riding. You keep earning.</h2>
+        <p class="mt-5 max-w-[52ch] text-[1.05rem] leading-relaxed">Partner artists earn in two ways, and stay in control of how their work is used.</p>
+        <a href="#waitlist" data-role="artist" class="btn-primary mt-8">Apply as a founding artist</a>
+      </div>
+      <div class="grid gap-4 sm:grid-cols-2" data-reveal data-delay="1">
+        <div class="rounded-xl bg-page p-6 ring-1 ring-line">
+          <svg class="h-8 w-8 text-brass" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="7" width="22" height="18" rx="2"/><path d="M5 12h22M10 17h6"/></svg>
+          <h3 class="mt-4 text-[1.2rem] font-semibold">A share of collection subscriptions</h3>
+          <p class="mt-2 text-[0.95rem] leading-relaxed">When retailers subscribe to your collection, part of that goes to you.</p>
+        </div>
+        <div class="rounded-xl bg-page p-6 ring-1 ring-line">
+          <svg class="h-8 w-8 text-brass" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 4l2.6 7.4L26 14l-7.4 2.6L16 24l-2.6-7.4L6 14l7.4-2.6Z"/><path d="M25 22l1 3 3 1-3 1-1 3-1-3-3-1 3-1Z"/></svg>
+          <h3 class="mt-4 text-[1.2rem] font-semibold">A share of generation usage</h3>
+          <p class="mt-2 text-[0.95rem] leading-relaxed">When designs are created in your style, a component of that usage is yours too.</p>
+        </div>
+        <ul class="space-y-3 rounded-xl bg-page p-6 text-[0.95rem] ring-1 ring-line sm:col-span-2">
+          <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>You agree which source material is used, and how.</li>
+          <li class="flex gap-3"><svg class="mt-1 h-4 w-4 shrink-0 text-primary" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5l3 3 7-7"/></svg>Your collection carries your name.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════ 8 · WAITLIST ═════════ -->
+<section id="waitlist" class="relative isolate overflow-hidden py-28 text-[#F1E7D6] md:py-40" aria-labelledby="wl-title">
+  <img src="assets/img/hero-night.webp" srcset="assets/img/hero-night-960.webp 960w, assets/img/hero-night.webp 1672w" sizes="100vw" loading="lazy" alt="" class="absolute inset-0 -z-10 h-full w-full object-cover object-[60%_40%]">
+  <div class="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,rgba(11,13,20,.55),rgba(11,13,20,.85))]" aria-hidden="true"></div>
+  <div class="mx-auto max-w-2xl px-5 text-center md:px-8" data-reveal>
+    <span class="logo-mark mx-auto block h-20 text-[#F1E7D6]" aria-hidden="true"></span>
+    <h2 id="wl-title" class="mt-6 text-[clamp(2.2rem,5vw,3.8rem)] font-semibold leading-[1.02] tracking-[-0.015em] text-[#F1E7D6]">Put down roots early.</h2>
+    <p class="mx-auto mt-4 max-w-[46ch] text-[1.08rem] leading-relaxed text-[#E4D8C4]">Join the waitlist for launch news and early access.</p>
+    <form id="wl-form" class="mt-10 space-y-4 text-left" novalidate>
+      <fieldset class="mx-auto flex w-fit rounded-full bg-white/10 p-1 ring-1 ring-white/15">
+        <legend class="sr-only">I am</legend>
+        <label class="cursor-pointer"><input type="radio" name="role" value="retailer" class="peer sr-only" checked><span class="block rounded-full px-4 py-2 text-[0.9rem] font-medium text-[#E4D8C4] transition peer-checked:bg-[#F1E7D6] peer-checked:text-[#12151F] peer-focus-visible:ring-2 peer-focus-visible:ring-[#E0763F]">I'm a retailer</span></label>
+        <label class="cursor-pointer"><input type="radio" name="role" value="artist" class="peer sr-only"><span class="block rounded-full px-4 py-2 text-[0.9rem] font-medium text-[#E4D8C4] transition peer-checked:bg-[#F1E7D6] peer-checked:text-[#12151F] peer-focus-visible:ring-2 peer-focus-visible:ring-[#E0763F]">I'm an artist</span></label>
+      </fieldset>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <label for="wl-email" class="sr-only">Email address</label>
+        <input id="wl-email" name="email" type="email" required autocomplete="email" placeholder="you@yourbrand.com" class="min-w-0 flex-1 rounded-lg border border-white/20 bg-white/10 px-4 py-3 text-[#F1E7D6] placeholder:text-[#C9BCA6]/70 focus:border-[#E0763F] focus:outline-none">
+        <button type="submit" class="rounded-lg bg-[#E0763F] px-6 py-3 font-semibold text-[#12151F] transition hover:brightness-110">Join the waitlist</button>
+      </div>
+      <p id="wl-msg" class="min-h-6 text-center text-[0.92rem] text-[#E4D8C4]" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer class="border-t border-line bg-page">
+  <div class="mx-auto flex max-w-7xl flex-col gap-6 px-5 py-10 md:flex-row md:items-center md:px-8">
+    <a href="#top" class="flex items-center gap-3 text-ink" aria-label="Stated Roots, back to top"><span class="logo-mark h-9" aria-hidden="true"></span><span class="logo-word h-[13px]" aria-hidden="true"></span></a>
+    <ul class="flex flex-wrap gap-x-6 gap-y-2 text-[0.9rem] md:ml-10">
+      <li><a class="hover:text-primary" href="#collections">Collections</a></li>
+      <li><a class="hover:text-primary" href="#how">How it works</a></li>
+      <li><a class="hover:text-primary" href="#brand-book">The Brand Book</a></li>
+      <li><a class="hover:text-primary" href="#artists">For artists</a></li>
+    </ul>
+    <p class="font-mono text-[0.72rem] text-body/70 md:ml-auto">© <span id="year">2026</span> Stated Roots · A <a class="underline decoration-body/30 underline-offset-4 hover:text-primary" href="https://whatsoever.ai" target="_blank" rel="noopener">Whatsoever.ai</a> brand · Artwork shown is illustrative</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js" defer></script>
+</body>
+</html>
