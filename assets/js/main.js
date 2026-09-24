@@ -26,18 +26,52 @@
   onScrollNav();
   window.addEventListener("scroll", onScrollNav, { passive: true });
 
-  // ── hero: the study develops into the painting, then the design arrives ──
+  // ── hero: the study develops into the painting, then the design arrives.
+  //    After the intro the development follows the scroll: back at the top it
+  //    returns to the study; scrolling down develops it again. ──
   const hero = $("#hero-art");
   const steps = $$(".hero-steps [data-step]");
   const card = $("#design-card");
+  const STUDY_RANGE = 0.32; // share of a viewport height that develops the painting
+  let reveal = 0, target = 0, introDone = false, armed = false, heroRaf = 0, last = 0;
   const setStep = (n) => steps.forEach((li) => li.classList.toggle("on", Number(li.dataset.step) <= n));
-  const playHero = () => {
-    if (reduce) { setStep(2); card && card.classList.add("in"); return; }
-    setStep(0);
-    requestAnimationFrame(() => hero.classList.add("hero-go"));
-    setTimeout(() => setStep(1), 1500);
-    setTimeout(() => { setStep(2); card && card.classList.add("in"); }, 3400);
+  const paintHero = () => {
+    hero.style.setProperty("--reveal", reveal.toFixed(4));
+    setStep(reveal > 0.97 ? 2 : reveal > 0.45 ? 1 : 0);
+    if (card) card.classList.toggle("in", reveal > 0.97);
   };
+  const easeInOut = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+  const follow = (now) => {
+    const dt = Math.min(0.05, (now - (last || now)) / 1000);
+    last = now;
+    reveal += (target - reveal) * (1 - Math.exp(-dt * 5));
+    if (Math.abs(target - reveal) < 0.002) reveal = target;
+    paintHero();
+    heroRaf = reveal === target ? 0 : requestAnimationFrame(follow);
+  };
+  const chase = () => { if (!heroRaf) { last = 0; heroRaf = requestAnimationFrame(follow); } };
+  const onScrollHero = () => {
+    if (!introDone || root.dataset.theme === "dark") return;
+    const range = window.innerHeight * STUDY_RANGE;
+    if (window.scrollY > range) armed = true; // only once the visitor has really scrolled away
+    if (!armed) return;
+    target = Math.min(1, Math.max(0, window.scrollY / range));
+    chase();
+  };
+  const playHero = () => {
+    if (reduce) { reveal = target = 1; introDone = true; paintHero(); return; }
+    const start = performance.now() + 500, dur = 3200;
+    const intro = (now) => {
+      const x = Math.min(1, Math.max(0, (now - start) / dur));
+      reveal = target = easeInOut(x);
+      paintHero();
+      if (x < 1) requestAnimationFrame(intro);
+      else { introDone = true; onScrollHero(); }
+    };
+    paintHero();
+    requestAnimationFrame(intro);
+  };
+  window.addEventListener("scroll", onScrollHero, { passive: true });
   const day = $(".hero-day", hero);
   const sketch = $(".hero-sketch", hero);
   Promise.all([day, sketch].map((img) => (img.decode ? img.decode().catch(() => {}) : Promise.resolve())))
